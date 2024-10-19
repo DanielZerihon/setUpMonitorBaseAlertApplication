@@ -12,17 +12,14 @@ def newjson():
     alert = request.get_json()
 
     # Parse JSON alert from the request
-    print("Received JSON alert:")
-    print(alert)
+    print(f"Received JSON alert: {alert}")
 
     # Extract necessary information from the JSON alert
     alert_host = alert['alerts'][0]['labels']['host']
     alert_value = float(alert['alerts'][0]['annotations']['description'])
 
-    print("alert_host")
-    print(alert_host)
-    print("alert_value")
-    print(alert_value)
+    print(f"alert_host {alert_host}")
+    print(f"alert_value{alert_value}")
 
 
     file_path = f"/home/ec2-user/projectForTal/program/numOfSessionOnEachNode/{alert_host}.txt"
