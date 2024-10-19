@@ -1,7 +1,6 @@
 # Monitor Program
 
-This repository contains an bash program that triggeres a Ansible program along with related files for setting up monitoring using Python flask applicaion, Pometheus and Telegraf.
-
+This repository contains scripts and configurations to set up a monitoring system using a Python Flask application, Prometheus, Prometheus alert manager, Telegraf, and Ansible.
 
 - `program/`: Contains Python script `alertCapture.py`, Bash script `execudeProgram.sh` and folder `numOfSessionOnEachNode` that will conatin a txt file with the lines:
 	a numberOfSession: X. 
