@@ -1,0 +1,43 @@
+---
+- block:
+    - name: Insert ipToParse to the end of prometheus.yml
+      lineinfile:
+        path: "{{ pathToPrometheusFile }}"
+        line: "{{ ipToParse }}"
+        insertafter: EOF
+      delegate_to: localhost
+
+    - name: Check if prometheus.yml syntax is correct
+      shell: /usr/local/bin/promtool check config "{{ pathToPrometheusFile }}"
+      delegate_to: localhost
+
+    - name: Start the prometheus service
+      service:
+        name: prometheus
+        state: restarted
+        enabled: true
+      delegate_to: localhost
+
+    - name: Get prometheus service status
+      systemd:
+        name: prometheus
+        state: started
+      register: prometheus_service_status
+      delegate_to: localhost
+
+    - name: fail if prometheus service falied to come up
+      fail:
+        msg: "prometheus service is not started"
+      when: prometheus_service_status is not defined or prometheus_service_status.failed or prometheus_service_status.state != 'started'
+
+    - name: Set fact nodeParsed
+      set_fact:
+        nodeParsed: true
+        
+  rescue:
+    - name: Failure detected, setting nodeParsed to false
+      set_fact:
+        nodeParsed: false
+    - name: Display error message
+      debug:
+        msg: "An error occurred during playbook execution. Skip all next tasks."
