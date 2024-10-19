@@ -5,10 +5,9 @@
 This Ansible playbook automates It performs the following tasks:
 
 - Installs required packages and dependencies per OS.
-- install telegraf plugins.
-- install required packages.
-- install and starts the Telegraf service.
-- Adds the server to Prometheus for monitoring.
+- install and start telegraf plugins.
+- set up prometheus and alertmanager.
+- Adds the server to Prometheus for monitoring automatically.
 - Executes a test suite to validate the program's functionality.
 
 ## Playbook Structure
