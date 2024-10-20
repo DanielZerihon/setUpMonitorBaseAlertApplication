@@ -1,6 +1,6 @@
 # Monitor Program
 
-This repository contains scripts and configurations to set up a monitoring system using a Python Flask application, Prometheus, Prometheus alert manager, Telegraf, and Ansible.
+This repository contains scripts and configurations to set up a monitoring system using a Python Flask application, bash, Prometheus, Prometheus alert manager, Telegraf, and Ansible.
 
 
 the user need to only run the 'program/execudeProgram.sh' and it will do the rest. 
