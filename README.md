@@ -1,4 +1,4 @@
-# Single click monitor base alerts application
+# Single click monitor base alerts application (Ansible)
 
 This repository contains scripts and configurations to set up a monitoring system using a Python Flask application, bash, Prometheus, Prometheus alert manager, Telegraf, and Ansible.
 
